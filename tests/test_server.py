@@ -20,12 +20,38 @@ def mock_competitions(mocker):
 @pytest.fixture
 def mock_club(mocker):
     return mocker.patch('Python_Testing.server.clubs', [{'name': 'Club1', "email": "john@simplylift.co", "points": 13},
-                                                {'name': 'Club2', "email": "admin@irontemple.com", "points": 4}])
+                                                        {'name': 'Club2', "email": "admin@irontemple.com",
+                                                         "points": 4}])
 
 
-def test_display(client, mock_club):
+def test_purchasePlaces_with_competition_available(client, mock_competitions, mock_club):
+    competitions = mock_competitions
     clubs = mock_club
-    response = client.get('/display')
+
+    response = client.post('/purchasePlaces', data={
+        'competition': 'Competition2',
+        'club': 'Club1',
+        'places': '2'
+    })
+
     assert response.status_code == 200
-    for club in clubs:
-        assert bytes(club['name'], "utf-8") in response.data
+    assert b'Great-booking complete!' in response.data
+    assert clubs[0]['points'] == 11
+    assert competitions[1]['numberOfPlaces'] == 3
+
+
+def test_purchasePlaces_with_tournament_passed(client, mock_competitions, mock_club):
+    # create test data
+    competitions = mock_competitions
+    clubs = mock_club
+
+    response = client.post('/purchasePlaces', data={
+        'competition': 'Competition1',
+        'club': 'Club1',
+        'places': '2'
+    })
+
+    assert response.status_code == 200
+    assert b'The competition has already passed' in response.data
+    assert clubs[0]['points'] == 13
+    assert competitions[0]['numberOfPlaces'] == 15
