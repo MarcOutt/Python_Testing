@@ -23,16 +23,9 @@ def mock_club(mocker):
                                                 {'name': 'Club2', "email": "admin@irontemple.com", "points": 4}])
 
 
-def test_purchasePlaces_update_points(client, mock_competitions, mock_club):
-    competitions = mock_competitions
+def test_display(client, mock_club):
     clubs = mock_club
-
-    response = client.post('/purchasePlaces', data={
-        'competition': 'Competition1',
-        'club': 'Club2',
-        'places': '2'
-    })
-
+    response = client.get('/display')
     assert response.status_code == 200
-    assert b'Great-booking complete!' in response.data
-    assert clubs[0]['points'] == 13
+    for club in clubs:
+        assert bytes(club['name'], "utf-8") in response.data
