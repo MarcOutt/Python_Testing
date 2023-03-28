@@ -23,7 +23,7 @@ def mock_club(mocker):
                                                 {'name': 'Club2', "email": "admin@irontemple.com", "points": 4}])
 
 
-def test_purchasePlaces(client, mock_competitions, mock_club):
+def test_purchasePlaces_update_points(client, mock_competitions, mock_club):
     competitions = mock_competitions
     clubs = mock_club
 
