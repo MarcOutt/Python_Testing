@@ -13,11 +13,7 @@ def client():
 def mock_competitions(mocker):
     return mocker.patch('Python_Testing.server.competitions',
                         [{'name': 'Competition1', "date": "2020-03-27 10:00:00", 'numberOfPlaces': 15},
-<<<<<<< HEAD
-                         {'name': 'Competition2', "date": "2025-10-22 13:30:00", 'numberOfPlaces': 15},
-=======
                          {'name': 'Competition2', "date": "2025-10-22 13:30:00", 'numberOfPlaces': 5},
->>>>>>> bug/clubs-should-not-be-able-to-use-more-than-their-points-allowed
                          {'name': 'Competition3', "date": "2024-10-22 16:30:00", 'numberOfPlaces': 0}])
 
 
@@ -28,57 +24,17 @@ def mock_club(mocker):
                                                          "points": 4}])
 
 
-def test_purchase_exceed_maximum_points(client, mock_competitions, mock_club):
+def test_showSummary_with_valid_email(client, mock_competitions, mock_club):
     competitions = mock_competitions
     clubs = mock_club
-
-    response = client.post('/purchasePlaces', data={
-        'competition': 'Competition2',
-<<<<<<< HEAD
-        'club': 'Club1',
-        'places': '13'
-    })
-
+    response = client.post('/showSummary', data={'email': 'john@simplylift.co'})
     assert response.status_code == 200
-    assert b'you book more than 12 places' in response.data
-    assert competitions[1]['numberOfPlaces'] == 15
-    assert clubs[0]['points'] == 13
+    assert b"Welcome, john@simplylift.co" in response.data
 
 
-def test_purchase_maximum_points(client, mock_competitions, mock_club):
-=======
-        'club': 'Club2',
-        'places': '5'
-    })
-
-    assert response.status_code == 200
-    assert b'You do not have enough points to book!' in response.data
-    assert competitions[1]['numberOfPlaces'] == 5
-    assert clubs[1]['points'] == 4
-
-
-def test_purchase_place(client, mock_competitions, mock_club):
->>>>>>> bug/clubs-should-not-be-able-to-use-more-than-their-points-allowed
+def test_showSummary_with_invalid_email(client, mock_competitions, mock_club):
     competitions = mock_competitions
     clubs = mock_club
-
-    response = client.post('/purchasePlaces', data={
-        'competition': 'Competition2',
-<<<<<<< HEAD
-        'club': 'Club1',
-        'places': '12'
-=======
-        'club': 'Club2',
-        'places': '3'
->>>>>>> bug/clubs-should-not-be-able-to-use-more-than-their-points-allowed
-    })
-
+    response = client.post('/showSummary', data={'email': 'unknow@email.co'})
     assert response.status_code == 200
-    assert b'Great-booking complete!' in response.data
-<<<<<<< HEAD
-    assert competitions[1]['numberOfPlaces'] == 3
-    assert clubs[0]['points'] == 1
-=======
-    assert competitions[1]['numberOfPlaces'] == 2
-    assert clubs[1]['points'] == 1
->>>>>>> bug/clubs-should-not-be-able-to-use-more-than-their-points-allowed
+    assert b'This email: unknow@email.co does not exist' in response.data
