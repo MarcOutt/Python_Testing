@@ -54,9 +54,12 @@ def purchasePlaces():
     date_formatted = today_date.strftime("%Y-%m-%d %H:%M:%S")
     if date_formatted < competition['date']:
         placesRequired = int(request.form['places'])
-        club['points'] = int(club['points']) - placesRequired
-        competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
-        flash('Great-booking complete!')
+        if placesRequired <= 12:
+            club['points'] = int(club['points']) - placesRequired
+            competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
+            flash('Great-booking complete!')
+        else:
+            flash('you book more than 12 places')
     else:
         flash('The competition has already passed')
 
