@@ -49,6 +49,7 @@ def book(competition, club):
 def purchasePlaces():
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
+
     today_date = datetime.now()
     date_formatted = today_date.strftime("%Y-%m-%d %H:%M:%S")
     if date_formatted < competition['date']:
