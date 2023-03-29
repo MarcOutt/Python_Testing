@@ -1,5 +1,3 @@
-import json
-
 import pytest
 from Python_Testing.server import loadClubs, loadCompetitions, app
 
@@ -28,18 +26,13 @@ def test_index(client):
     assert response.status_code == 200
 
 
-
 def test_showSummary(client):
-    competitions = loadCompetitions()
-    clubs = loadClubs()
     response = client.post('/showSummary', data={'email': 'john@simplylift.co'})
     assert response.status_code == 200
     assert b"Welcome, john@simplylift.co" in response.data
 
 
 def test_book(client):
-    competitions = loadCompetitions()
-    clubs = loadClubs()
     response = client.get('/book/Winter Festival/Simply Lift')
     assert response.status_code == 200
 
@@ -62,5 +55,3 @@ def test_display(client):
 def test_logout(client):
     response = client.get('/logout')
     assert response.status_code == 302
-
-
