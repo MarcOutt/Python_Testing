@@ -67,7 +67,7 @@ def test_purchasePlaces_update_points(client, mock_competitions, mock_club):
 
     assert response.status_code == 200
     assert b'Great-booking complete!' in response.data
-    assert clubs[0]['points'] == 13
+    assert clubs[1]['points'] == 2
 
 
 def test_purchase_exceed_maximum_points(client, mock_competitions, mock_club):
