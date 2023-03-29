@@ -5,12 +5,14 @@ from flask import Flask, render_template, request, redirect, flash, url_for
 
 
 def loadClubs():
+    """Loads the clubs data from a JSON file."""
     with open('clubs.json') as c:
         listOfClubs = json.load(c)['clubs']
         return listOfClubs
 
 
 def loadCompetitions():
+    """Loads the competitions data from a JSON file."""
     with open('competitions.json') as comps:
         listOfCompetitions = json.load(comps)['competitions']
         return listOfCompetitions
@@ -25,11 +27,14 @@ clubs = loadClubs()
 
 @app.route('/')
 def index():
+    """Renders the index.html template."""
     return render_template('index.html')
 
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
+    """Renders the welcome.html template if the email entered in the form exists in the list of clubs.
+        Flashes an error message and renders the index.html template if the email does not exist."""
     email = request.form['email']
     club = None
     for c in clubs:
@@ -44,6 +49,9 @@ def showSummary():
 
 @app.route('/book/<competition>/<club>')
 def book(competition, club):
+    """Renders the booking.html template if the competition and club exist.
+       Flashes an error message and renders the welcome.html template if either the competition
+       or club does not exist."""
     foundClub = [c for c in clubs if c['name'] == club][0]
     foundCompetition = [c for c in competitions if c['name'] == competition][0]
     if foundClub and foundCompetition:
@@ -54,6 +62,8 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
+    """Allows the user to purchase places for a competition and flashes a success or error message based on
+    the outcome."""
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
 
@@ -80,11 +90,13 @@ def purchasePlaces():
 
 @app.route('/display')
 def display():
+    """Renders the display.html template and displays the list of clubs."""
     return render_template('display.html', my_table=clubs)
 
 
 @app.route('/logout')
 def logout():
+    """Redirects the user to the index route."""
     return redirect(url_for('index'))
 
 
