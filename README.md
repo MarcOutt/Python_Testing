@@ -9,6 +9,8 @@
 * Pré-requis
 * Installation
 * Démarrage
+* Rapport de test
+* Rapport de performance
 * Rapport Flake8
 
 ## INTRODUCTION
@@ -19,7 +21,7 @@ L'application permettra aux clubs d'inscrire des athlètes aux compétitions org
 Actuellement, les clubs gagnent des points via la mise en place et le déroulement des
 compétitions. Chaque club peut voir son solde actuel et échanger des points pour inscrire des athlètes à de futures compétitions, à raison d'un point par inscription. Chaque compétition aura un nombre limité d'inscriptions, et chaque club ne peut inscrire qu'un maximum de 12 athlètes.
 
-###Cahier des charges:
+### Cahier des charges:
 
 *Les secrétaires des clubs de l'organisation pourront utiliser leur adresse électronique
 pour se connecter et consulter la liste des compétitions à venir.
@@ -70,7 +72,7 @@ pip install -r requirements.txt
 * Afin de tester les différentes fonctionalités du site, connectez-vous avec un des 3 comptes: "john@simplylift.co", "admin@irontemple.com" et "kate@shelifts.co.uk".
 
 
-##Rapport de test
+## Rapport de test
 -----------------
 Les tests concernant les fonctionnalités de l'application ont été réalisé avec pytest, la couverture de test est de 98 %. Le rapport des tests peut être trouvé dans la branche QA du projet.
 
