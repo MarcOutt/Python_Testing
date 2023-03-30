@@ -35,7 +35,7 @@ totaux de points indiquant le nombre de points disponibles pour chaque club. Il 
 devrait pas être nécessaire de se connecter au site pour voir la page.
 * Compte tenu du nombre d'utilisateurs potentiels, il faut réduire au minimum les temps de construction et de rendu ; il ne devrait pas falloir plus de 5 secondes pour récupérer une liste de compétitions, et pas plus de 2 secondes pour mettre à jour le total de points
 
-### informations complémentaires:
+### Informations complémentaires:
 
 https://github.com/OpenClassrooms-Student-Center/Python_Testing
 
