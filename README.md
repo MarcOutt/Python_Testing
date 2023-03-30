@@ -79,7 +79,7 @@ Les tests concernant les fonctionnalités de l'application ont été réalisé a
 
 ## Rapport de performance
 --------------------------
-Afin de nous assurez que le temps de chargement ne dépasse pas 5 secpndes et que les mises à jour ne prennent pas plus de 2 secondes, un test de performance a été effectué avec Locust pour 6 utilisateurs.
+Afin de nous assurez que le temps de chargement ne dépasse pas 5 secondes et que les mises à jour ne prennent pas plus de 2 secondes, un test de performance a été effectué avec Locust pour 6 utilisateurs.
 
 
 ## Rapport FLAKE8
