@@ -17,9 +17,8 @@
 ---------------
 
 Ce projet consiste à améliorer l'application web de la société Gûdlft par des tests et du débogage. 
-L'application permettra aux clubs d'inscrire des athlètes aux compétitions organisées au sein
-Actuellement, les clubs gagnent des points via la mise en place et le déroulement des
-compétitions. Chaque club peut voir son solde actuel et échanger des points pour inscrire des athlètes à de futures compétitions, à raison d'un point par inscription. Chaque compétition aura un nombre limité d'inscriptions, et chaque club ne peut inscrire qu'un maximum de 12 athlètes.
+L'application permettra aux clubs d'inscrire des athlètes aux compétitions organisées au sein de la division.
+Actuellement, les clubs gagnent des points via la mise en place et le déroulement des compétitions. Chaque club peut voir son solde actuel et échanger des points pour inscrire des athlètes à de futures compétitions, à raison d'un point par inscription. Chaque compétition aura un nombre limité d'inscriptions, et chaque club ne peut inscrire qu'un maximum de 12 athlètes.
 
 ### Cahier des charges:
 
