@@ -1,4 +1,7 @@
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+![image](https://github.com/MarcOutt/Python_Testing/assets/112987151/1f299d96-0202-4ebf-b432-ba4fbfa907b0)
+![image](https://github.com/MarcOutt/Python_Testing/assets/112987151/1326a6cf-5129-4fc4-b265-b333a11ac8fb)
+![image](https://github.com/MarcOutt/Python_Testing/assets/112987151/34e7c53c-a2c9-4dc9-9571-9bd3819161c1)
+![image](https://github.com/MarcOutt/Python_Testing/assets/112987151/b35d1793-cf58-4cec-bc20-96f3fc30b184)
 # Améliorez une application Web Python par des tests et du débogage
 -------------------------------------------------------------------
 
